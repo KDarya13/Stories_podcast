@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --index: calc(1vw + 1vh);
+    --transition: 1.5s cubic-bezier(.05, .5, 0, 1);
+
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Sofia Sans Semi Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+}
+.logo {
+    --logo-size: calc(var(--index) * 2);
+    width: calc(var(--logo-size) * 2);
+    height: calc(var(--logo-size) * 2);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 1;
+    top: calc(var(--index) * 2.8);
+    left: calc(51% - calc(var(--logo-size) / 2));
+    
+   
+}
+/*определяется перспектива у родительского элемента*/
+.layers {
+    overflow: hidden;
+    perspective: 1000px;
+
+}
+
+.layers__container {
+    height: 100vh;
+    transform-style: preserve-3d; /*необходимо прописать эту характеристику для обёртки с элементами*/
+    transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+    min-height: 500px;
+    will-change: transform;
+    /*плавная анимация*/
+    transition: transform var(--transition);
+}
+
+.layers__item {
+    position: absolute;
+    inset: -5vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.layer-1 {
+    transform: translateZ(-55px) scale(1.06);
+}
+
+.layer-2 {
+   
+    transform: translateZ(180px) scale(.8);
+}
+
+.hero-content {
+    font-size: calc(var(--index) * 2.9);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: calc(var(--index) * -.15);
+    line-height: 1.35em;
+    margin-top: calc(var(--index) * 5.5);
+}
+.hero-content span {
+    display: block;
+}
+
+.hero-content__p {
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: calc(var(--index) * .73);
+    line-height: 3;
+}
+.button-start {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: calc(var(--index) * .71);
+    letter-spacing: -.02vw;
+    padding: calc(var(--index) * .7) calc(var(--index) * 1.25);
+    color: #fff;
+    background-color: transparent;
+    border-radius: 10em;
+    border: rgb(255 255 255 / .4) 3px solid;
+    outline: none;
+    cursor: pointer;
+    margin-top: calc(var(--index) * 2.5);
+}
+
